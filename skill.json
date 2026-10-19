@@ -1,0 +1,84 @@
+{
+  "name": "genpark-agentic-commerce-carbon-border-adjustment-cbam-tariff-calculator-skill",
+  "title": "Carbon Border Adjustment Mechanism (CBAM) Tariff Calculator Skill",
+  "version": "1.0.0",
+  "description": "EU CBAM carbon import duty calculator, direct and indirect embedded greenhouse gas emissions (Scope 1/2) intensity auditor, and carbon certificate cost projection for international trade agents. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "organization": {
+    "name": "GenPark Inc.",
+    "url": "https://www.genpark.ai",
+    "linkedin": "https://www.linkedin.com/company/92955550"
+  },
+  "mcp_version": "2024-11-05",
+  "category": "agentic-commerce",
+  "tools": [
+    {
+      "name": "calculate_cbam_import_duty",
+      "description": "Calculate projected EU CBAM financial liability on imported carbon-intensive goods (steel, aluminum, cement, fertilizer, hydrogen).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "commodity_type": {
+            "type": "string",
+            "enum": [
+              "steel",
+              "aluminum",
+              "cement",
+              "fertilizer",
+              "hydrogen"
+            ]
+          },
+          "import_quantity_metric_tons": {
+            "type": "number"
+          },
+          "embedded_emissions_tco2e_per_ton": {
+            "type": "number"
+          },
+          "eu_ets_carbon_price_eur_per_tco2e": {
+            "type": "number"
+          },
+          "origin_country_carbon_tax_paid_eur": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "commodity_type",
+          "import_quantity_metric_tons",
+          "embedded_emissions_tco2e_per_ton",
+          "eu_ets_carbon_price_eur_per_tco2e"
+        ]
+      }
+    },
+    {
+      "name": "simulate_cbam_decarbonization_arbitrage",
+      "description": "Simulate return on investment (ROI) from switching to low-carbon suppliers versus paying recurring EU ETS CBAM carbon certificates.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "annual_import_tons": {
+            "type": "number"
+          },
+          "current_emissions_intensity": {
+            "type": "number"
+          },
+          "green_supplier_emissions_intensity": {
+            "type": "number"
+          },
+          "green_premium_per_ton_eur": {
+            "type": "number"
+          },
+          "ets_price_eur": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "annual_import_tons",
+          "current_emissions_intensity",
+          "green_supplier_emissions_intensity",
+          "green_premium_per_ton_eur",
+          "ets_price_eur"
+        ]
+      }
+    }
+  ]
+}
